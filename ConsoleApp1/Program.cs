@@ -1,6 +1,6 @@
 ﻿using System;
 //using System.Collections.Generic;
-//using System.Linq;
+using System.Linq;
 //using System.Text;
 //using System.Threading.Tasks;
 
@@ -85,9 +85,21 @@ namespace ConsoleApp1
             Console.WriteLine("Enter a number:");
             string n = Console.ReadLine();
 
-            // get a number from the user, output N random characters, N times
+            int num = Int32.Parse(n);
+
+
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            Random rand = new Random();
+
+            for (int i = 0; i < num; i++) {
+                string result = new string(Enumerable.Repeat(chars, num)
+                    .Select(s => s[rand.Next(s.Length)]).ToArray());
+
+                Console.WriteLine(result);
+            }
 
             Console.ReadLine();
+            
         }
 	}
 }
