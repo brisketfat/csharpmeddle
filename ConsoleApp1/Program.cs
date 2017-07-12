@@ -1,16 +1,18 @@
 ﻿using System;
 //using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 //using System.Text;
 //using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-	class Program
-	{
+    class Program
+    {
         // this is the main method for our program
-        static void Main(string[] args)
-		{
+        static void Main(string[] args = null)
+        {
+            Console.ForegroundColor = ConsoleColor.White;
             // capture the users choice            
             string choice = MainMenu();
 
@@ -24,6 +26,9 @@ namespace ConsoleApp1
                 case "2":
                     OutputNCharsNTimes();
                     break;
+                default:
+                    Oops(choice + " is not 1 or 2...", "Main");
+                    break;
             }
 
             // repeat or not
@@ -32,7 +37,7 @@ namespace ConsoleApp1
                 string[] empty = { "" };
                 Main(empty);
             }
-		}
+        }
 
         // asks the user if they want to do it all over again, returns bool
         static bool Again()
@@ -41,14 +46,20 @@ namespace ConsoleApp1
             Console.WriteLine("Would you like to do it again?");
             string choice = Console.ReadLine();
 
-            // all the possible No values
-            string[] nopes = { "N", "n", "No", "NO", "no" };
-            int pos = Array.IndexOf(nopes, choice);
-
-            // retrn bool
-            if (pos > -1)
+            if (!choice.IsNullOrEmpty() && choice.ToLower().Substring(0, 1) == "n")
             {
                 return false;
+            }
+            else
+            {
+                if (choice.IsNullOrEmpty() || choice.ToLower().Substring(0, 1) != "y")
+                {
+                    Oops(choice + " seems like the wrong answer", "Again");
+                }
+                else
+                {
+                    return true;
+                }
             }
             return true;
         }
@@ -72,10 +83,13 @@ namespace ConsoleApp1
                 Console.WriteLine(i + ": " + selection);
                 i++;
             }
-            
+
             // capture user choice
             string choice = Console.ReadLine();
-
+            if (!choice.IsNullOrEmpty() || (choice.ToLower().Substring(0, 1) != "1" || choice.ToLower().Substring(0, 1) != "2"))
+            {
+                Oops("Invalid Option", "MainMenu");
+            }
             // return choice
             return choice;
         }
@@ -83,14 +97,21 @@ namespace ConsoleApp1
         // outputs a random number
         static void OutputRandomNumber()
         {
-            // instantiate random class
-            Random rand = new Random();
+            try
+            {
+                // instantiate random class
+                Random rand = new Random();
 
-            // output random number
-            Console.WriteLine(rand.Next());
+                // output random number
+                Console.WriteLine(rand.Next());
 
-            // wait for user (just a pause)
-            Console.ReadLine();
+                // wait for user (just a pause)
+                Console.ReadLine();
+            }
+            catch (Exception ex)
+            {
+                Oops(ex.Message, null);
+            }
         }
 
         // outputs N characters, N times
@@ -109,7 +130,8 @@ namespace ConsoleApp1
             Random rand = new Random();
 
             // loop n times and output string
-            for (int i = 0; i < num; i++) {
+            for (int i = 0; i < num; i++)
+            {
                 // i found this here: https://stackoverflow.com/questions/1344221/how-can-i-generate-random-alphanumeric-strings-in-c
                 string result = new string(Enumerable.Repeat(chars, num)
                     .Select(s => s[rand.Next(s.Length)]).ToArray());
@@ -120,5 +142,26 @@ namespace ConsoleApp1
             // wait for user (just a pause)
             Console.ReadLine();
         }
-	}
+
+        private static void Oops(string msg = null, string method = null)
+        {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Ya Big Dummeh!");
+            if (msg != null)
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine(msg);
+                Console.ForegroundColor = ConsoleColor.White;
+            }
+            if (method != null)
+            {
+                var mi = typeof(Program).GetMethod(method);
+                if (mi != null)
+                {
+                    mi.Invoke(null, null);
+                }
+            }
+        }
+    }
 }
