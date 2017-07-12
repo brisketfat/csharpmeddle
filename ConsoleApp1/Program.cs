@@ -1,37 +1,86 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+//using System.Collections.Generic;
+//using System.Linq;
+//using System.Text;
+//using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
 	class Program
 	{
-		static void Main(string[] args)
+        // this is the main method for our program
+        static void Main(string[] args)
 		{
-			int number;
-			number = 1;
+            string choice = MainMenu();
 
-			while (number != 0)
-			{
-				Console.WriteLine("Enter a number between 1 and 10 (0 to exit):");
+            switch (choice)
+            {
+                case "1":
+                    OutputRandomNumber();
+                    break;
 
-				number = int.Parse(Console.ReadLine());
+                case "2":
+                    OutputNCharsNTimes();
+                    break;
+            }
 
-
-				if (number > 0 && number <= 10)
-				{
-					Console.WriteLine("Good");
-				}
-				else
-				{
-					Console.WriteLine("Bad");
-				}
-
-			}
-
+            if (Again())
+            {
+                Main({ "" });
+            }
 
 		}
+
+        static bool Again()
+        {
+            Console.WriteLine("Would you like to do it again?");
+            string choice = Console.ReadLine();
+
+            if (choice == "N") return false;
+            return true;
+        }
+
+        // outputs the main menu and returns the users choice
+        static string MainMenu()
+        {
+            Console.WriteLine("Please make a selection:");
+
+            string[] selections = {
+                "Output a Random Number",
+                "Output n Characters n Times"
+            };
+
+            int i = 1;
+            foreach (string selection in selections)
+            {
+                Console.WriteLine(i + ": " + selection);
+                i++;
+            }
+            
+            string choice = Console.ReadLine();
+
+            return choice;
+        }
+
+        // outputs a random number
+        static void OutputRandomNumber()
+        {
+            Random rand = new Random();
+
+            Console.WriteLine(rand.Next());
+
+            Console.ReadLine();
+        }
+
+        // outputs N characters, N times
+        static void OutputNCharsNTimes()
+        {
+            Console.WriteLine("Enter a number:");
+            string n = Console.ReadLine();
+
+            // get a number from the user, output N random characters, N times
+
+            Console.ReadLine();
+        }
 	}
 }
