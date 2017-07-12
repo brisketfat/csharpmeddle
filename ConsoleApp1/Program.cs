@@ -26,17 +26,24 @@ namespace ConsoleApp1
 
             if (Again())
             {
-                Main({ "" });
+                string[] empty = { "" };
+                Main(empty);
             }
-
 		}
 
+        // asks the user if they want to do it all over again, returns bool
         static bool Again()
         {
             Console.WriteLine("Would you like to do it again?");
             string choice = Console.ReadLine();
 
-            if (choice == "N") return false;
+            string[] nopes = { "N", "n", "No", "NO", "no" };
+            int pos = Array.IndexOf(nopes, choice);
+
+            if (pos > -1)
+            {
+                return false;
+            }
             return true;
         }
 
