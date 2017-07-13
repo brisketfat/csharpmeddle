@@ -147,8 +147,10 @@ namespace ConsoleApp1
 			}
 		}
 
+        // outputs the LED thing from Knight Rider
         static void Kit()
         {
+            int cycles = 5;
             Console.ForegroundColor = ConsoleColor.Red;
 
             // todo: make this array populate programatically, using maths
@@ -183,7 +185,7 @@ namespace ConsoleApp1
                 "#=-            ",
             };
 
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < cycles; i++)
             {
                 foreach (string line in progression)
                 {
@@ -192,9 +194,9 @@ namespace ConsoleApp1
                     System.Threading.Thread.Sleep(20);
                 }
             }
-
+            Console.Clear();
             Console.ForegroundColor = ConsoleColor.White;
-
+            Console.WriteLine("Hoff!");
         }
 		
 		private static void Oops(string msg = null, string method = null)
