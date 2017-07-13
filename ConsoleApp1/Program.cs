@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 //using System.Text;
 //using System.Threading.Tasks;
+using System.Net;
 
 namespace ConsoleApp1
 {
@@ -46,6 +47,10 @@ namespace ConsoleApp1
 					Kit();
 					break;
 
+				case "4":
+					IPAddress();
+					break;
+
 				default:
 					// if an invalid option is input, dump the user back at the main menu
 					Main();
@@ -84,6 +89,7 @@ namespace ConsoleApp1
 				"Output a Random Number",
 				"Output n Characters n Times",
 				"Kit",
+				"IP From Web",
 			};
 
 			// output choices
@@ -197,6 +203,14 @@ namespace ConsoleApp1
 			Console.Clear();
 			Console.ForegroundColor = ConsoleColor.White;
 			Console.WriteLine("Hoff!");
+		}
+
+		private static void IPFromWeb()
+		{
+			Console.Clear();
+			WebClient client = new WebClient();
+			string downloadString = client.DownloadString("http://samplebeer.com");
+			Console.WriteLine(downloadString);
 		}
 		
 		private static void Oops(string msg = null, string method = null)
