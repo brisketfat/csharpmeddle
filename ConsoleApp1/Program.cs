@@ -48,7 +48,7 @@ namespace ConsoleApp1
 					break;
 
 				case "4":
-					IPAddress();
+					IPFromWeb();
 					break;
 
 				default:
