@@ -42,6 +42,10 @@ namespace ConsoleApp1
 					OutputNCharsNTimes();
 					break;
 
+                case "3":
+                    Kit();
+                    break;
+
 				default:
 					// if an invalid option is input, dump the user back at the main menu
 					Main();
@@ -78,7 +82,8 @@ namespace ConsoleApp1
 			// array of choices
 			string[] selections = {
 				"Output a Random Number",
-				"Output n Characters n Times"
+				"Output n Characters n Times",
+                "Kit",
 			};
 
 			// output choices
@@ -91,10 +96,6 @@ namespace ConsoleApp1
 
 			// capture user choice
 			string choice = Console.ReadLine();
-			if (!choice.IsNullOrEmpty() || (choice.ToLower().Substring(0, 1) != "1" || choice.ToLower().Substring(0, 1) != "2"))
-			{
-				Oops("Invalid Option", "MainMenu");
-			}
 			// return choice
 			return choice;
 		}
@@ -146,6 +147,56 @@ namespace ConsoleApp1
 			}
 		}
 
+        static void Kit()
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+
+            // todo: make this array populate programatically, using maths
+            string[] progression = {
+                "=#             ",
+                "-=#            ",
+                " -=#           ",
+                "  -=#          ",
+                "   -=#         ",
+                "    -=#        ",
+                "     -=#       ",
+                "      -=#      ",
+                "       -=#     ",
+                "        -=#    ",
+                "         -=#   ",
+                "          -=#  ",
+                "           -=# ",
+                "            -=#",
+                "             #=",
+                "            #=-",
+                "           #=- ",
+                "          #=-  ",
+                "         #=-   ",
+                "        #=-    ",
+                "       #=-     ",
+                "      #=-      ",
+                "     #=-       ",
+                "    #=-        ",
+                "   #=-         ",
+                "  #=-          ",
+                " #=-           ",
+                "#=-            ",
+            };
+
+            for (int i = 0; i < 5; i++)
+            {
+                foreach (string line in progression)
+                {
+                    Console.Clear();
+                    Console.WriteLine(line);
+                    System.Threading.Thread.Sleep(20);
+                }
+            }
+
+            Console.ForegroundColor = ConsoleColor.White;
+
+        }
+		
 		private static void Oops(string msg = null, string method = null)
 		{
 			Console.ForegroundColor = ConsoleColor.Red;
