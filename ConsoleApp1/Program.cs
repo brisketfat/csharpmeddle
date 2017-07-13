@@ -12,24 +12,24 @@ namespace ConsoleApp1
 		// this is the main method for our program
 		static void Main(string[] args = null)
 		{
-            // clear output
-            Console.Clear();
+			// clear output
+			Console.Clear();
 
-            // set foreground/background
+			// set foreground/background
 			Console.BackgroundColor = ConsoleColor.Black;
 			Console.ForegroundColor = ConsoleColor.White;
 
-            // allows skipping the main menu on startup and go directly to your choice if called via the cmd line
-            string choice = "";
-            if (args == null || args.Length < 1)
-            {
-                choice = MainMenu();
-            }
-            else
-            {
-                // capture the users choice
-                choice = args[0];
-            }
+			// allows skipping the main menu on startup and go directly to your choice if called via the cmd line
+			string choice = "";
+			if (args == null || args.Length < 1)
+			{
+				choice = MainMenu();
+			}
+			else
+			{
+				// capture the users choice
+				choice = args[0];
+			}
 			
 			// do the selected choice
 			switch (choice)
@@ -43,7 +43,7 @@ namespace ConsoleApp1
 					break;
 
 				default:
-                    // if an invalid option is input, dump the user back at the main menu
+					// if an invalid option is input, dump the user back at the main menu
 					Main();
 					break;
 			}
@@ -102,7 +102,7 @@ namespace ConsoleApp1
 		// outputs a random number
 		static void OutputRandomNumber()
 		{
-            Console.Clear();
+			Console.Clear();
 
 			try
 			{
@@ -121,7 +121,7 @@ namespace ConsoleApp1
 		// outputs N characters, N times
 		static void OutputNCharsNTimes()
 		{
-            Console.Clear();
+			Console.Clear();
 
 			// ask user to enter number, capture
 			Console.WriteLine("Enter a number:");
