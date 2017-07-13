@@ -205,12 +205,20 @@ namespace ConsoleApp1
 			Console.WriteLine("Hoff!");
 		}
 
+		// outputs the response from a web request
 		private static void IPFromWeb()
 		{
-			Console.Clear();
-			WebClient client = new WebClient();
-			string downloadString = client.DownloadString("http://samplebeer.com");
-			Console.WriteLine(downloadString);
+			try
+			{
+				Console.Clear();
+				WebClient client = new WebClient();
+				string downloadString = client.DownloadString("http://samplebeer.com");
+				Console.WriteLine(downloadString);
+			}
+			catch (Exception ex)
+			{
+				Oops(ex.Message, null);
+			}
 		}
 		
 		private static void Oops(string msg = null, string method = null)
