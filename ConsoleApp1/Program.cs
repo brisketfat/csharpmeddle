@@ -42,9 +42,9 @@ namespace ConsoleApp1
 					OutputNCharsNTimes();
 					break;
 
-                case "3":
-                    Kit();
-                    break;
+				case "3":
+					Kit();
+					break;
 
 				default:
 					// if an invalid option is input, dump the user back at the main menu
@@ -83,7 +83,7 @@ namespace ConsoleApp1
 			string[] selections = {
 				"Output a Random Number",
 				"Output n Characters n Times",
-                "Kit",
+				"Kit",
 			};
 
 			// output choices
@@ -147,57 +147,57 @@ namespace ConsoleApp1
 			}
 		}
 
-        // outputs the LED thing from Knight Rider
-        static void Kit()
-        {
-            int cycles = 5;
-            Console.ForegroundColor = ConsoleColor.Red;
+		// outputs the LED thing from Knight Rider
+		static void Kit()
+		{
+			int cycles = 5;
+			Console.ForegroundColor = ConsoleColor.Red;
 
-            // todo: make this array populate programatically, using maths
-            string[] progression = {
-                "=#             ",
-                "-=#            ",
-                " -=#           ",
-                "  -=#          ",
-                "   -=#         ",
-                "    -=#        ",
-                "     -=#       ",
-                "      -=#      ",
-                "       -=#     ",
-                "        -=#    ",
-                "         -=#   ",
-                "          -=#  ",
-                "           -=# ",
-                "            -=#",
-                "             #=",
-                "            #=-",
-                "           #=- ",
-                "          #=-  ",
-                "         #=-   ",
-                "        #=-    ",
-                "       #=-     ",
-                "      #=-      ",
-                "     #=-       ",
-                "    #=-        ",
-                "   #=-         ",
-                "  #=-          ",
-                " #=-           ",
-                "#=-            ",
-            };
+			// todo: make this array populate programatically, using maths
+			string[] progression = {
+				"=#             ",
+				"-=#            ",
+				" -=#           ",
+				"  -=#          ",
+				"   -=#         ",
+				"    -=#        ",
+				"     -=#       ",
+				"      -=#      ",
+				"       -=#     ",
+				"        -=#    ",
+				"         -=#   ",
+				"          -=#  ",
+				"           -=# ",
+				"            -=#",
+				"             #=",
+				"            #=-",
+				"           #=- ",
+				"          #=-  ",
+				"         #=-   ",
+				"        #=-    ",
+				"       #=-     ",
+				"      #=-      ",
+				"     #=-       ",
+				"    #=-        ",
+				"   #=-         ",
+				"  #=-          ",
+				" #=-           ",
+				"#=-            ",
+			};
 
-            for (int i = 0; i < cycles; i++)
-            {
-                foreach (string line in progression)
-                {
-                    Console.Clear();
-                    Console.WriteLine(line);
-                    System.Threading.Thread.Sleep(20);
-                }
-            }
-            Console.Clear();
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("Hoff!");
-        }
+			for (int i = 0; i < cycles; i++)
+			{
+				foreach (string line in progression)
+				{
+					Console.Clear();
+					Console.WriteLine(line);
+					System.Threading.Thread.Sleep(20);
+				}
+			}
+			Console.Clear();
+			Console.ForegroundColor = ConsoleColor.White;
+			Console.WriteLine("Hoff!");
+		}
 		
 		private static void Oops(string msg = null, string method = null)
 		{
